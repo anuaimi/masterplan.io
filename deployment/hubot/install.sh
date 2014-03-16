@@ -2,11 +2,20 @@
 
 sudo apt-get update
 
-sudo apt-get install nodejs npm
-apt-get install build-essential libssl-dev git-core redis-server libexpat1-dev
+# install dependencies
+sudo apt-get install -y redis-server
 
-npm install -g coffee-script
+# will install the latest version of nodejs
+sudo apt-get install -y python-software-properties
+sudo add-apt-repository -y ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install -y nodejs
+sudo npm install -g coffee-script
+sudo npm install -g hubot
 
-cd /opt
-git clone git://github.com/github/hubot.git && cd hubot
-npm install
+#HUBOT_AUTH_ADMIN=
+
+BOT_NAME=myhubot
+hubot --create ${BOT_NAME}
+cd ${BOT_NAME}
+bin/hubot
