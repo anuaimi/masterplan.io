@@ -52,9 +52,14 @@ sudo apt-get install -y nginx
 # --argumentsRealm.roles.${JENKINS_ADMIN_USER}=admin
 
 # get plugins
+#cd /var/lib/jenkins/plugins
+JENKINS_HOME=/var/lib/jenkins
 cd $JENKINS_HOME/plugins
-sudo curl -O http://updates.jenkins-ci.org/latest/git.hpi
-sudo chown jenkins:nogroup git.hpi
+sudo wget http://updates.jenkins-ci.org/latest/git.hpi
+sudo wget http://updates.jenkins-ci.org/latest/github.hpi
+sudo wget http://updates.jenkins-ci.org/latest/slack.hpi
+# rvm, ruby, logstash
+sudo chown -R jenkins:nogroup ${JENKINS_HOME}/plugins
 curl --data "" http://localhost:8080/reload
 
 # restart jenkins
